@@ -108,7 +108,7 @@ $temp=mysqli_query($conn,$sql);
         <!-- Breadcrumb End -->
         
         <!-- Checkout Start -->
-		<form action="">
+		<form action="form.php" method='POST' enctype="multipart/form-data">
         <div class="checkout">
             <div class="container-fluid"> 
                 <div class="row">
@@ -173,7 +173,7 @@ $temp=mysqli_query($conn,$sql);
                                 <div class="row">
                                    <div class="col-md-6">
                                         <label>Delivery Date</label>
-                                        <input class="form-control" name="delivery date" id="sch" type="date" >
+                                        <input class="form-control" name="delivery_date" id="sch" type="date" >
                                         <h3>Image Card</h3>
                                         <p>Now send a printed copy of your picture and a personalized message along with your gift to your loved ones and surprise them! (The printed card would like the one shown here!)</p>
                                         <input type="file" name="image">
@@ -191,7 +191,7 @@ $temp=mysqli_query($conn,$sql);
                         </div>
                     </div>
 					</div>
-					</form>
+				
                     <div class="col-lg-4">
                         <div class="checkout-inner">
                             <div class="checkout-summary">
@@ -262,7 +262,7 @@ $temp=mysqli_query($conn,$sql);
                                     </div>
                                 </div>
                                 <div class="checkout-btn">
-                                    <button><a href="delivered.php">Place Order</a></button>
+                                    <button type="submit">Place Order</button>
                                 </div>
                             </div>
                         </div>
@@ -270,6 +270,7 @@ $temp=mysqli_query($conn,$sql);
                 </div>
             </div>
         </div>
+            </form>
         <!-- Checkout End -->
         
         <!-- Footer Start -->

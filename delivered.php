@@ -2,14 +2,29 @@
 session_start();
 $conn=mysqli_connect('localhost','root','');
 mysqli_select_db($conn,'myntra');
-$sql="select * from product join order_log where sno=product_id and order_id=$_SESSION[order_id]";
-$temp=mysqli_query($conn,$sql);
+$sql="select zipcode from billing where order_id=$_SESSION[order_id]";
+$result=mysqli_query($conn,$sql);
+$temp=mysqli_fetch_assoc($result);
+$zip=$temp['zipcode'];
+$sql="select * from tailor where pincode=$zip";
+$result=mysqli_query($conn,$sql);
+//echo "<script>alert($result)</script>";
+if($result==NULL || $result=="")
+{
+ $msg="Sorry you address is not covered by Myntra yet! Soon we will extend our features to your place! Sorry for the inconvinience!" ;
+}
+else
+{
+  $temp=mysqli_fetch_assoc($result);
+}
+
+
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+    <link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
         <meta charset="utf-8">
         <title>MYNTRA</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -21,7 +36,7 @@ $temp=mysqli_query($conn,$sql);
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -32,7 +47,7 @@ $temp=mysqli_query($conn,$sql);
         <link href="css/style.css" rel="stylesheet">
     </head>
 	
-   <body>
+   <body onload="move()">
         
         <!-- Nav Bar Start -->
         <div class="nav" style="height: 80px">
@@ -91,11 +106,92 @@ $temp=mysqli_query($conn,$sql);
                 </nav>
             </div>
         </div>
+     <section  style="background-color: white;position: relative;top:5vh;margin-left:5%;margin-right: 5%">
+     <h1 style="text-align: center;">Order Status</h1>
+     <ul class="fa-ul" >
+     <li style="margin-left: 2vw"><i class="fa-li fa fa-check-square"></i>Ordered</li>
+     <li><i class="fa-li fa fa-check-square"></i>Shipped</li>
+     <li><i class="fa-li fa fa-check-square"></i>Out for Delivery</li>
+     <li><i class="fa-li fa fa-check-square"></i>Delivered</li>
+   </ul>
+
+        <div class="w3-light-grey">
+    <div id="myBar" class="w3-green" style="height:24px;width:0"></div>
+  </div>
+  <div style="position: relative;margin:10%">
+  <h2 >
+    Hope You Liked Our product!
+  </h2>
+  <p>We are introducing a new feature! Now, you can avail Myntra tailors incase you need any of our products stitched or altered! You can get it altered free or just pay subsidized price from market price, based on your order! Our tailors come to your housee, note these alterations, make the necessary changes and then return back to you at your door step! All our tailors are handpicked, verified and offer best services! <h5>Your Delight is our Pleasure !</h5></p>
+    <input type="checkbox" onclick="show()" id="need">Need a tailor?<br><br>
+    <div id="tailor"style="height: 100%"><h5 style="float:left;border:5px solid #FF6F61B3;padding: 4%;"><?php if(isset($msg))
+    {echo $msg;}
+    else{
+    ?>We have chosen our tailor based on your billing address.<br><br>Here are the details of your tailor:<br>Name: <?php echo $temp['name'] ?><br><br>Phone: <?php echo $temp['phno'] ?><br><br>Address: <?php echo $temp['address'] ?><br><br>Orders Completed: <?php echo $temp['orders_completed'] ?><br><br>Shop:<?php echo $temp['shop'] ?><br><br><a href="" style="text-decoration:underline;">Want tailor from different location?</a></h5><img style="height: 100%;width: 20vw;margin-left: 5%" src="img/<?php echo $temp['picture'] ?>"><?php } ?></div>
+     <br><br><br><br></section>
+     <style>
+      #tailor
+      {
+        display: none;
+      }
+     li
+     {
+         display:block;
+         float:left;
+         margin-left:10vw;
+         margin-right:2vw;
+        
+     }
+     ul
+     {
+         position:relative;
+         top:4vh;
+         left:15vw;
+         z-index: 4;
+
+     }
+     .w3-light-grey {
+  width:62%;
+  position:relative; 
+  left:18vw;
+}
+     
+     </style>
 
 
 
+  <br>
+  </div>
+  <style>
+  
+  </style>
+  <script>
+    function show()
+    {
+      if(document.getElementById('need').checked)
+      {
+        document.getElementById('tailor').style.display='block';
+      }
+      else
+      {
+        document.getElementById('tailor').style.display='none';
 
-
+      }
+    }
+function move() {
+  var elem = document.getElementById("myBar");   
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
+</script>
 
 
         <div class="footer">
