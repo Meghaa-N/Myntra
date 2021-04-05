@@ -16,6 +16,7 @@ if($result==NULL || $result=="")
 else
 {
   $temp=mysqli_fetch_assoc($result);
+  $_SESSION['tailor']=$temp['sno'];
 }
 
 
@@ -124,10 +125,10 @@ else
   </h2>
   <p>We are introducing a new feature! Now, you can avail Myntra tailors incase you need any of our products stitched or altered! You can get it altered free or just pay subsidized price from market price, based on your order! Our tailors come to your housee, note these alterations, make the necessary changes and then return back to you at your door step! All our tailors are handpicked, verified and offer best services! <h5>Your Delight is our Pleasure !</h5></p>
     <input type="checkbox" onclick="show()" id="need">Need a tailor?<br><br>
-    <div id="tailor"style="height: 100%"><h5 style="float:left;border:5px solid #FF6F61B3;padding: 4%;"><?php if(isset($msg))
+    <div id="tailor"><div style="height: 100%"><h5 style="float:left;border:5px solid #FF6F61B3;padding: 4%;"><?php if(isset($msg))
     {echo $msg;}
     else{
-    ?>We have chosen our tailor based on your billing address.<br><br>Here are the details of your tailor:<br>Name: <?php echo $temp['name'] ?><br><br>Phone: <?php echo $temp['phno'] ?><br><br>Address: <?php echo $temp['address'] ?><br><br>Orders Completed: <?php echo $temp['orders_completed'] ?><br><br>Shop:<?php echo $temp['shop'] ?><br><br><a href="" style="text-decoration:underline;">Want tailor from different location?</a></h5><img style="height: 100%;width: 20vw;margin-left: 5%" src="img/<?php echo $temp['picture'] ?>"><?php } ?></div>
+    ?>We have chosen our tailor based on your billing address.<br><br>Here are the details of your tailor:<br>Name: <?php echo $temp['name'] ?><br><br>Phone: <?php echo $temp['phno'] ?><br><br>Address: <?php echo $temp['address'] ?><br><br>Orders Completed: <?php echo $temp['orders_completed'] ?><br><br>Shop:<?php echo $temp['shop'] ?><br><br><a href="" style="text-decoration:underline;">Want tailor from different location?</a></h5><img style="height: 100%;width: 20vw;margin-left: 5%" src="img/<?php echo $temp['picture'] ?>"></div><button style="margin-top: 3%;border:2px solid #FF6F61B3;background-color:#FF6F61B3 "><a href="tailor_booking.php">CONFIRM BOOKING</a></button></div><?php } ?>
      <br><br><br><br></section>
      <style>
       #tailor

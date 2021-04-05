@@ -59,7 +59,7 @@ $_SESSION['customer_id']=1;
                         <div class="navbar-nav mr-auto">
                             <a href="index.html" class="nav-item nav-link active">Home</a>
                             <a href="product-list.html" class="nav-item nav-link">Products</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
                             <a href="wishlist.html" class="nav-item nav-link">Wishlist</a>
                             
                             <a href="my-account.html" class="nav-item nav-link">My Account</a>
@@ -80,8 +80,8 @@ $_SESSION['customer_id']=1;
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                                 <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Login</a>
-                                    <a href="#" class="dropdown-item">Register</a>
+                                    <a href="login.php" class="dropdown-item">Login</a>
+                                    <a href="login.php" class="dropdown-item">Register</a>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ $_SESSION['customer_id']=1;
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span>
                             </a>
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>
@@ -171,47 +171,32 @@ $_SESSION['customer_id']=1;
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8" style="margin-left: 5%">
                         <div class="header-slider normal-slider">
-                            <div class="header-slider-item">
-                                <img src="img/slider-1.jpg" alt="Slider Image" />
-                                <div class="header-slider-caption">
-                                    <p>Some text goes here that describes the image</p>
+                            <div class="header-slider-item" style="width: 100%;">
+                                <img src="img/wallpaper3.jpg" alt="Slider Image" style="width: 60vw;height: 60vh" />
+                                <div class="header-slider-caption" style="height: 10vh;margin-top: 30vh;">
+                                    
                                     <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                             <div class="header-slider-item">
-                                <img src="img/slider-2.jpg" alt="Slider Image" />
-                                <div class="header-slider-caption">
-                                    <p>Some text goes here that describes the image</p>
+                                <img src="img/wallpaper1.jpg" alt="Slider Image" style="width: 60vw;height: 60vh;background-size: contain;" />
+                                <div class="header-slider-caption" style="height: 10vh;margin-top: 30vh;">
+                                    <
                                     <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
-                            <div class="header-slider-item">
-                                <img src="img/slider-3.jpg" alt="Slider Image" />
-                                <div class="header-slider-caption">
-                                    <p>Some text goes here that describes the image</p>
+                            <div class="header-slider-item" >
+                                <img src="img/discount1.jpg" alt="Slider Image" style="width: 60vw;height: 60vh"/>
+                                <div class="header-slider-caption" style="height: 10vh;margin-top: 30vh;">
+                                    
                                     <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="header-img">
-                            <div class="img-item">
-                                <img src="img/category-1.jpg" />
-                                <a class="img-text" href="">
-                                    <p>Some text goes here that describes the image</p>
-                                </a>
-                            </div>
-                            <div class="img-item">
-                                <img src="img/category-2.jpg" />
-                                <a class="img-text" href="">
-                                    <p>Some text goes here that describes the image</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -232,6 +217,46 @@ $_SESSION['customer_id']=1;
         </div>
         <!-- Brand End -->      
         
+             
+        <div class="featured-product product">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h1 style="color: #3E4152">Featured Product</h1>
+                </div>
+                <div class="row align-items-center product-slider product-slider-4" style="width: 100%">
+                    <?php $sql="select * from product"; 
+                    $temp=mysqli_query($con,$sql); 
+                    while ($row = mysqli_fetch_assoc($temp)) {?>
+                    <div class="col-lg-3" >
+                        <div class="product-item" style="width:300px;background-color: white">
+                            <div class="product-title" style="background-color: white">
+                                <h3 href="#" style="color:black;font-weight: 1000"><?php echo $row['name'] ?></h3>
+                                <div class="ratting">
+                                    <?php echo $row['description'] ?>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="img/product-1.jpg" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="product-price" style="background-color: white">
+                                <h3 style="color: black;"><span >Rs.</span><?php echo $row['discount'] ?></h3>
+                                <span style="text-decoration: line-through;color: red">Rs.</span><span style="text-decoration: line-through;color:red"><?php echo $row['price'] ?></span> 
+                                <button id='<?php echo $row['sno'] ?>' onclick="add_to_cart(this.id)" class="btn"><i class="fa fa-shopping-cart"></i>Buy Now</button></div>
+                            </div>
+                        </div>
+                    </div><?php } ?>
+                    
+                    </div>
+                </div>
+            </div>
         <!-- Feature Start-->
         <div class="feature">
             <div class="container-fluid">
@@ -240,45 +265,36 @@ $_SESSION['customer_id']=1;
                         <div class="feature-content">
                             <i class="fab fa-cc-mastercard"></i>
                             <h2>Secure Payment</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur elit
-                            </p>
+                           
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 feature-col">
                         <div class="feature-content">
                             <i class="fa fa-truck"></i>
                             <h2>Worldwide Delivery</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur elit
-                            </p>
+                            
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 feature-col">
                         <div class="feature-content">
                             <i class="fa fa-sync-alt"></i>
                             <h2>90 Days Return</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur elit
-                            </p>
+                            
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 feature-col">
                         <div class="feature-content">
                             <i class="fa fa-comments"></i>
                             <h2>24/7 Support</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur elit
-                            </p>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Feature End-->      
-        
-        <!-- Category Start-->
-        <div class="category">
+        <!-- Feature End--> 
+       <!--  <!-- Category Start-->
+        <!--<div class="category">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
@@ -328,49 +344,10 @@ $_SESSION['customer_id']=1;
                 </div>
             </div>
         </div>
-        <!-- Category End-->       
+        <!-- Category End-->    -->    
         
        
         <!-- Featured Product Start -->
-        <div class="featured-product product">
-            <div class="container-fluid">
-                <div class="section-header">
-                    <h1>Featured Product</h1>
-                </div>
-                <div class="row align-items-center product-slider product-slider-4" style="width: 100%">
-                    <?php $sql="select * from product"; 
-                    $temp=mysqli_query($con,$sql); 
-                    while ($row = mysqli_fetch_assoc($temp)) {?>
-                    <div class="col-lg-3" >
-                        <div class="product-item" style="width:300px;background-color: white">
-                            <div class="product-title" style="background-color: white">
-                                <h3 href="#" style="color:black;font-weight: 1000"><?php echo $row['name'] ?></h3>
-                                <div class="ratting">
-                                    <?php echo $row['description'] ?>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/product-1.jpg" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-
-                            <div class="product-price" style="background-color: white">
-                                <h3 style="color: black;"><span >Rs.</span><?php echo $row['discount'] ?></h3>
-                                <span style="text-decoration: line-through;color: red">Rs.</span><span style="text-decoration: line-through;color:red"><?php echo $row['price'] ?></span> 
-                                <button id='<?php echo $row['sno'] ?>' onclick="add_to_cart(this.id)" class="btn"><i class="fa fa-shopping-cart"></i>Buy Now</button></div>
-                            </div>
-                        </div>
-                    </div><?php } ?>
-                    
-                    </div>
-                </div>
-            </div>
         
         <!-- Featured Product End -->       
              
@@ -573,7 +550,7 @@ $_SESSION['customer_id']=1;
                         <div class="footer-widget">
                             <h2>Purchase Info</h2>
                             <ul>
-                                <li><a href="#">Pyament Policy</a></li>
+                                <li><a href="#">Payment Policy</a></li>
                                 <li><a href="#">Shipping Policy</a></li>
                                 <li><a href="#">Return Policy</a></li>
                             </ul>
@@ -602,19 +579,7 @@ $_SESSION['customer_id']=1;
         <!-- Footer End -->
         
         <!-- Footer Bottom Start -->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 copyright">
-                        <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
-                    </div>
-
-                    <div class="col-md-6 template-by">
-                        <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <!-- Footer Bottom End -->       
         
         <!-- Back to Top -->
