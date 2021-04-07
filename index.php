@@ -36,11 +36,12 @@ $_SESSION['customer_id']=1;
             {
                 font-size: 100px;
             }
+
         </style>
     <body>
         
         <!-- Nav Bar Start -->
-        <div class="nav" style="height: 80px">
+        <div class="nav" style="height: 80px;">
             <div class="container-fluid">
 
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -221,14 +222,15 @@ $_SESSION['customer_id']=1;
         <div class="featured-product product">
             <div class="container-fluid">
                 <div class="section-header">
-                    <h1 style="color: #3E4152">Featured Product</h1>
+                    <h1 style="color: #3E4152;font-family: Whitney,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">Trending in Kurtas</h1>
                 </div>
                 <div class="row align-items-center product-slider product-slider-4" style="width: 100%">
-                    <?php $sql="select * from product"; 
+
+                    <?php $sql="select * from product where category='featured';"; 
                     $temp=mysqli_query($con,$sql); 
                     while ($row = mysqli_fetch_assoc($temp)) {?>
                     <div class="col-lg-3" >
-                        <div class="product-item" style="width:300px;background-color: white">
+                        <div class="product-item" style="width:22vw;background-color: white">
                             <div class="product-title" style="background-color: white">
                                 <h3 href="#" style="color:black;font-weight: 1000"><?php echo $row['name'] ?></h3>
                                 <div class="ratting">
@@ -237,7 +239,7 @@ $_SESSION['customer_id']=1;
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-1.jpg" alt="Product Image">
+                                    <img src="img/<?php echo $row['image'] ?>" style="height: 35vh" alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -251,12 +253,54 @@ $_SESSION['customer_id']=1;
                                 <span style="text-decoration: line-through;color: red">Rs.</span><span style="text-decoration: line-through;color:red"><?php echo $row['price'] ?></span> 
                                 <button id='<?php echo $row['sno'] ?>' onclick="add_to_cart(this.id)" class="btn"><i class="fa fa-shopping-cart"></i>Buy Now</button></div>
                             </div>
-                        </div>
-                    </div><?php } ?>
+                        </div><?php } ?>
+                    </div>
                     
                     </div>
                 </div>
-            </div>
+
+
+
+               <div class="featured-product product">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h1 style="color: #3E4152;font-family: Whitney,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">Trending in Shoes</h1>
+                </div>
+                <div class="row align-items-center product-slider product-slider-4" style="width: 100%">
+
+                    <?php $sql="select * from product where category='shoe_t';"; 
+                    $temp=mysqli_query($con,$sql); 
+                    while ($row = mysqli_fetch_assoc($temp)) {?>
+                    <div class="col-lg-3" >
+                        <div class="product-item" style="width:22vw;background-color: white">
+                            <div class="product-title" style="background-color: white">
+                                <h3 href="#" style="color:black;font-weight: 1000"><?php echo $row['name'] ?></h3>
+                                <div class="ratting">
+                                    <?php echo $row['description'] ?>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="img/<?php echo $row['image'] ?>" style="height: 35vh" alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="product-price" style="background-color: white">
+                                <h3 style="color: black;"><span >Rs.</span><?php echo $row['discount'] ?></h3>
+                                <span style="text-decoration: line-through;color: red">Rs.</span><span style="text-decoration: line-through;color:red"><?php echo $row['price'] ?></span> 
+                                <button id='<?php echo $row['sno'] ?>' onclick="add_to_cart(this.id)" class="btn"><i class="fa fa-shopping-cart"></i>Buy Now</button></div>
+                            </div>
+                        </div><?php } ?>
+                    </div>
+                    
+                    </div>
+                </div>
+            
         <!-- Feature Start-->
         <div class="feature">
             <div class="container-fluid">
@@ -353,7 +397,7 @@ $_SESSION['customer_id']=1;
              
         
         <!-- Recent Product Start -->
-        <div class="recent-product product">
+       <!-- <div class="recent-product product">
             <div class="container-fluid">
                 <div class="section-header">
                     <h1>Recent Product</h1>
@@ -513,8 +557,13 @@ $_SESSION['customer_id']=1;
                         <div class="footer-widget">
                             <h2>Get in Touch</h2>
                             <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                                <p><i class="fa fa-envelope"></i>email@example.com</p>
+                                <p><i class="fa fa-map-marker"></i>Buildings Alyssa,
+Begonia and Clover situated in Embassy Tech Village,
+Outer Ring Road,
+Devarabeesanahalli Village,
+Varthur Hobli,
+Bengaluru – 560103, India</p>
+                                <p><i class="fa fa-envelope"></i>queriesmyntra@myntra.com</p>
                                 <p><i class="fa fa-phone"></i>+123-456-7890</p>
                             </div>
                         </div>

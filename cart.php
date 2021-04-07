@@ -241,7 +241,7 @@ location.reload();
                                         <tr>
                                             <td>
                                                 <div class="img">
-                                                    <a href="#"><img src="img/product-1.jpg" alt="Image"></a>
+                                                    <a href="#"><img src="img/<?php echo $row['image'] ?>" alt="Image"></a>
                                                     <p><?php echo $row['name'] ?></p>
                                                 </div>
                                             </td>
