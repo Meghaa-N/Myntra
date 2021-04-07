@@ -125,10 +125,19 @@ else
   </h2>
   <p>We are introducing a new feature! Now, you can avail Myntra tailors incase you need any of our products stitched or altered! You can get it altered free or just pay subsidized price from market price, based on your order! Our tailors come to your housee, note these alterations, make the necessary changes and then return back to you at your door step! All our tailors are handpicked, verified and offer best services! <h5>Your Delight is our Pleasure !</h5></p>
     <input type="checkbox" onclick="show()" id="need" style="background-color: green" ><span style="font-size: 20px">Need a tailor?</span><br><br>
-    <div id="tailor"><div style="height: 100%"><h5 style="float:left;border:5px solid #FF6F61B3;padding: 4%;margin-left: 7%"><?php if(isset($msg))
+    <div id="tailor">
+
+      <div style="height: 100%"><h5 style="float:left;border:5px solid #FF6F61B3;padding: 4%;margin-left: 7%"><?php if(isset($msg))
     {echo $msg;}
     else{
-    ?>We have chosen our tailor based on your billing address.<br><br>Here are the details of your tailor:<br>Name: <?php echo $temp['name'] ?><br><br>Phone: <?php echo $temp['phno'] ?><br><br>Address: <?php echo $temp['address'] ?><br><br>Orders Completed: <?php echo $temp['orders_completed'] ?><br><br>Shop:<?php echo $temp['shop'] ?><br><br><a href="" style="text-decoration:underline;">Want tailor from different location?</a></h5><img style="height: 100%;width: 20vw;margin-left: 5%" src="img/<?php echo $temp['picture'] ?>"/></div><button style="margin-top: 3%;border:2px solid #FF6F61B3;background-color:#FF6F61B3;height: 8vh;"><a href="tailor_booking.php" style="color: white">CONFIRM BOOKING</a></button><div class="contact-map" style="margin-top: 4%">
+    ?>We have chosen our tailor based on your billing address.<br><br>Here are the details of your tailor:<br>Name: <?php echo $temp['name'] ?><br><br>Phone: <?php echo $temp['phno'] ?><br><br>Address: <?php echo $temp['address'] ?><br><br>Orders Completed: <?php echo $temp['orders_completed'] ?><br><br>Shop:<?php echo $temp['shop'] ?><br><br><a href="" style="text-decoration:underline;">Want tailor from different location?</a></h5><img style="height: 100%;width: 20vw;margin-left: 5%" src="img/<?php echo $temp['picture'] ?>"/></div>
+
+
+
+    <button style="margin-top: 3%;border:2px solid #FF6F61B3;background-color:#FF6F61B3;height: 8vh;"><a href="tailor_booking.php" style="color: white">CONFIRM BOOKING</a></button>
+
+
+    <div class="contact-map" style="margin-top: 4%">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15922741.633009972!2d71.27060245000003!3d13.010940000000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52679f0d20f797%3A0x59f9f10c66e02a19!2sCollege%20of%20Engineering%2C%20Guindy!5e0!3m2!1sen!2sin!4v1617823938818!5m2!1sen!2sin" width="1100" height="450" style="border:0;margin-left: 5%" allowfullscreen="" loading="lazy"></iframe>
                         </div></div><?php } ?>
      <br><br><br><br></section>

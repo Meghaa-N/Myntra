@@ -9,7 +9,7 @@ $_SESSION['customer_id']=1;
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+        <link rel="stylesheet" href="styles.css" />
         <meta charset="utf-8">
         <title>MYNTRA</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
