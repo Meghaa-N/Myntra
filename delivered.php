@@ -18,7 +18,9 @@ else
   $temp=mysqli_fetch_assoc($result);
   $_SESSION['tailor']=$temp['sno'];
 }
-
+$sql="select delivery_date from billing where order_id=$_SESSION[order_id]";
+$result=mysqli_query($conn,$sql);
+$date=mysqli_fetch_assoc($result);
 
 
 ?>
@@ -51,7 +53,7 @@ else
    <body onload="move()">
         
         <!-- Nav Bar Start -->
-        <div class="nav" style="height: 80px">
+        <div class="nav" style="height: 80px;">
             <div class="container-fluid">
 
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -68,12 +70,12 @@ else
                             </a>
                         </div>
                         <div class="navbar-nav mr-auto">
-                            <a id="lid"href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Products</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
+                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                            <a href="product_list.php" class="nav-item nav-link">Products</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
                             <a href="wishlist.html" class="nav-item nav-link">Wishlist</a>
                             
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="tshirt_customization.php" class="nav-item nav-link">Customization</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
@@ -89,24 +91,23 @@ else
                         </div>
                         <div class="navbar-nav ml-auto" style="position: relative;right:50px">
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                                <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Login</a>
-                                    <a href="#" class="dropdown-item">Register</a>
-                                </div>
+                               <a href="product_list" class="nav-item nav-link">My Account</a>
+                               
                             </div>
                         </div>
                     </div>
                      <a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
+                                <span></span>
                             </a>
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                               
+                                <span></span>
                             </a>
                 </nav>
             </div>
         </div>
+        <!-- Nav Bar End -->    
      <section  style="background-color: white;position: relative;top:5vh;margin-left:5%;margin-right: 5%">
      <h1 style="text-align: center;">Order Status</h1>
      <ul class="fa-ul" >
@@ -124,17 +125,33 @@ else
     Hope You Liked Our product!
   </h2>
   <p>We are introducing a new feature! Now, you can avail Myntra tailors incase you need any of our products stitched or altered! You can get it altered free or just pay subsidized price from market price, based on your order! Our tailors come to your housee, note these alterations, make the necessary changes and then return back to you at your door step! All our tailors are handpicked, verified and offer best services! <h5>Your Delight is our Pleasure !</h5></p>
-    <input type="checkbox" onclick="show()" id="need" style="background-color: green" ><span style="font-size: 20px">Need a tailor?</span><br><br>
+    <input type="checkbox" onclick="show()" id="need" style="background-color: green" ><span style="font-size: 20px">Need a tailor for assured alterations in 24-hours?</span><br><br>
     <div id="tailor">
 
       <div style="height: 100%"><h5 style="float:left;border:5px solid #FF6F61B3;padding: 4%;margin-left: 7%"><?php if(isset($msg))
     {echo $msg;}
     else{
-    ?>We have chosen our tailor based on your billing address.<br><br>Here are the details of your tailor:<br>Name: <?php echo $temp['name'] ?><br><br>Phone: <?php echo $temp['phno'] ?><br><br>Address: <?php echo $temp['address'] ?><br><br>Orders Completed: <?php echo $temp['orders_completed'] ?><br><br>Shop:<?php echo $temp['shop'] ?><br><br><a href="" style="text-decoration:underline;">Want tailor from different location?</a></h5><img style="height: 100%;width: 20vw;margin-left: 5%" src="img/<?php echo $temp['picture'] ?>"/></div>
+    ?>We have chosen our tailor based on your billing address.<br><br>Here are the details of your tailor:<br>Name: <?php echo $temp['name'] ?><br><br>Phone: <?php echo $temp['phno'] ?><br><br>Address: <?php echo $temp['address'] ?><br><br>Orders Completed: <?php echo $temp['orders_completed'] ?><br><br>Shop:<?php echo $temp['shop'] ?><br><br><label>Mode of contacting</label><br>
+  <input type="radio" name="choice">Get my clothes from my home<br>
+  <input type="radio" name="choice">I'll go to the shop myself<br><br>If pick up, choose date and time of pick-up:
+  <br><br>
+ <input class="form-control" name="delivery_date" id="sch" type="date" style="width:250px;float: left;margin-right: 5%">
 
 
+ <select style="height: 35px">
+  <option>11 A.M - 2 P.M</option>
+  <option>3 P.M - 5 P.M</option>
+ 
+</select>
 
-    <button style="margin-top: 3%;border:2px solid #FF6F61B3;background-color:#FF6F61B3;height: 8vh;"><a href="tailor_booking.php" style="color: white">CONFIRM BOOKING</a></button>
+<!--<br><br><a href="" style="text-decoration:underline;">Want tailor from different location?</a> --></h5>
+	
+	<img style="height: 100%;width: 20vw;margin-left: 5%" src="img/<?php echo $temp['picture'] ?>"/></div>
+
+    <br>
+
+    <button style="margin-left: 5%; margin-top: 3%;border:2px solid #FF6F61B3;background-color:#FF6F61B3;height: 8vh; width:20vw"><a href="tailor_booking.php" style="color: white">CONFIRM BOOKING</a></button>
+    <br><br><a href="" style="text-decoration:underline;margin-left: 5%">Want tailor from different location?</a>
 
 
     <div class="contact-map" style="margin-top: 4%">
@@ -279,3 +296,86 @@ function move() {
                 </div>
             </div>
         </div>
+      </section>
+    </body>
+    <script>
+        var minday,minmonth,maxday,maxmonth;
+    var dtToday = new Date("<?php echo $date['delivery_date'] ?>");
+var month =dtToday.getMonth()+1;
+var year = dtToday.getFullYear(); 
+var day = dtToday.getDate();
+minday=day+0;
+minmonth=month;
+if(minmonth==1 || minmonth==3 || minmonth==5 || minmonth==7 || minmonth==8 || minmonth==10 || minmonth==12)
+{
+ if(minday>31)
+ {
+     minday=minday-31;
+     minmonth=minmonth+1;
+     if(minmonth>12)
+     {
+         minmonth=1;
+         year=year+1;
+     }
+}
+}
+else
+{
+    if(minday>30)
+ {
+     minday=minday-30;
+     minmonth=minmonth+1;
+     if(minmonth>12)
+     {
+         minmonth=0;
+         year=year+1;
+     }
+}
+    
+}
+if(minmonth < 10)
+   minmonth = '0' + minmonth.toString();
+if(minday < 10)
+   minday = '0' + minday.toString();
+
+var minDate = year + '-' + minmonth + '-' + minday;
+document.getElementById("sch").setAttribute("min",minDate);
+
+maxday=Number(minday)+3;
+maxmonth=Number(minmonth);
+
+if(maxmonth==1 || maxmonth==3 || maxmonth==5 || maxmonth==7 || maxmonth==8 || maxmonth==10 || maxmonth==12)
+{
+ if(maxday>31)
+ {
+     maxday=maxday-31;
+     maxmonth=maxmonth+1;
+     if(maxmonth>12)
+     {
+         maxmonth=1;
+         year=year+1;
+     }
+}
+}
+else
+{
+    if(maxday>30)
+ {
+     maxday=maxday-30;
+     maxmonth=maxmonth+1;
+     if(maxmonth>12)
+     {
+         maxmonth=1;
+         year=year+1;
+     }
+}
+    
+}
+if(maxmonth < 10)
+   maxmonth = '0' + maxmonth.toString();
+if(maxday < 10)
+   maxday = '0' + maxday.toString();
+
+var maxDate = year + '-' + maxmonth + '-' + maxday;
+document.getElementById("sch").setAttribute("max",maxDate);
+    </script>

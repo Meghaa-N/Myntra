@@ -1,9 +1,14 @@
 <?php
 session_start();
-$conn=mysqli_connect('localhost','root','');
-mysqli_select_db($conn,'myntra');
-$sql="select * from product join order_log where sno=product_id and order_id=$_SESSION[order_id]";
-$temp=mysqli_query($conn,$sql);
+$con=mysqli_connect('localhost','root','');
+mysqli_select_db($con,'myntra');
+$_SESSION['order_id']=1;
+$_SESSION['customer_id']=1;
+$sql="select sum(total) from order_log where order_id=1";
+$result=mysqli_query($con,$sql);
+$temp=mysqli_fetch_assoc($result);
+$total=$temp['sum(total)'];
+
 
 ?>
 <!DOCTYPE html>
@@ -34,8 +39,8 @@ $temp=mysqli_query($conn,$sql);
 	
    <body>
         
-        <!-- Nav Bar Start -->
-        <div class="nav" style="height: 80px">
+     <!-- Nav Bar Start -->
+        <div class="nav" style="height: 80px;">
             <div class="container-fluid">
 
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -52,12 +57,12 @@ $temp=mysqli_query($conn,$sql);
                             </a>
                         </div>
                         <div class="navbar-nav mr-auto">
-                            <a id="lid"href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Products</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
+                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                            <a href="product_list.php" class="nav-item nav-link">Products</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
                             <a href="wishlist.html" class="nav-item nav-link">Wishlist</a>
                             
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="tshirt_customization.php" class="nav-item nav-link">Customization</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
@@ -73,26 +78,23 @@ $temp=mysqli_query($conn,$sql);
                         </div>
                         <div class="navbar-nav ml-auto" style="position: relative;right:50px">
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                                <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Login</a>
-                                    <a href="#" class="dropdown-item">Register</a>
-                                </div>
+                               <a href="product_list" class="nav-item nav-link">My Account</a>
+                               
                             </div>
                         </div>
                     </div>
                      <a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
+                                <span></span>
                             </a>
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                               
+                                <span></span>
                             </a>
                 </nav>
             </div>
         </div>
-        <!-- Nav Bar End -->      
-        
+        <!-- Nav Bar End -->    
         
         
         <!-- Breadcrumb Start -->
@@ -195,11 +197,12 @@ $temp=mysqli_query($conn,$sql);
                     <div class="col-lg-4">
                         <div class="checkout-inner">
                             <div class="checkout-summary">
-                                <h1>Cart Total</h1>
-                                <p>Product Name<span>$99</span></p>
-                                <p class="sub-total">Sub Total<span>$99</span></p>
-                                <p class="ship-cost">Shipping Cost<span>$1</span></p>
-                                <h2>Grand Total<span>$100</span></h2>
+                                <div class="cart-content">
+                                            <h1>Cart Summary</h1>
+                                            <p>Sub Total:Rs.<span id="total"><?php echo $total ?></span></p>
+                                            <p>Shipping Cost<span>Rs.0</span></p>
+                                            <h2>Grand Total:Rs.<span id="gtotal"><?php echo $total ?></span></h2>
+                                        </div>
                             </div>
 
                             <div class="checkout-payment">

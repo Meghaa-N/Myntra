@@ -144,8 +144,8 @@ location.reload();
         </script>
     <body>
         
-        <!-- Nav Bar Start -->
-        <div class="nav" style="height: 80px">
+         <!-- Nav Bar Start -->
+        <div class="nav" style="height: 80px;">
             <div class="container-fluid">
 
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -162,12 +162,12 @@ location.reload();
                             </a>
                         </div>
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Products</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
+                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                            <a href="product_list.php" class="nav-item nav-link">Products</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
                             <a href="wishlist.html" class="nav-item nav-link">Wishlist</a>
                             
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="tshirt_customization.php" class="nav-item nav-link">Customization</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
@@ -183,26 +183,23 @@ location.reload();
                         </div>
                         <div class="navbar-nav ml-auto" style="position: relative;right:50px">
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                                <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Login</a>
-                                    <a href="#" class="dropdown-item">Register</a>
-                                </div>
+                               <a href="product_list" class="nav-item nav-link">My Account</a>
+                               
                             </div>
                         </div>
                     </div>
                      <a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
+                                <span></span>
                             </a>
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
+                                <span></span>
                             </a>
                 </nav>
             </div>
         </div>
-        <!-- Nav Bar End -->      
+        <!-- Nav Bar End -->    
         
         
         <!-- Breadcrumb Start -->
@@ -281,7 +278,7 @@ location.reload();
                                         </div>
                                         <div class="cart-btn">
                                             
-                                            <button>Checkout</button>
+                                            <a href="billing.php"><button>Checkout</button></a>
                                         </div>
                                     </div>
                                 </div>

@@ -58,12 +58,12 @@ $_SESSION['customer_id']=1;
                             </a>
                         </div>
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Products</a>
+                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                            <a href="product_list.php" class="nav-item nav-link">Products</a>
                             <a href="cart.php" class="nav-item nav-link">Cart</a>
                             <a href="wishlist.html" class="nav-item nav-link">Wishlist</a>
                             
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="tshirt_customization.php" class="nav-item nav-link">Customization</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
@@ -79,21 +79,18 @@ $_SESSION['customer_id']=1;
                         </div>
                         <div class="navbar-nav ml-auto" style="position: relative;right:50px">
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                                <div class="dropdown-menu">
-                                    <a href="login.php" class="dropdown-item">Login</a>
-                                    <a href="login.php" class="dropdown-item">Register</a>
-                                </div>
+                               <a href="product_list" class="nav-item nav-link">My Account</a>
+                               
                             </div>
                         </div>
                     </div>
                      <a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
+                                <span></span>
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
+                                <span></span>
                             </a>
                 </nav>
             </div>
@@ -107,7 +104,7 @@ $_SESSION['customer_id']=1;
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       text =this.responseText;
-      window.alert(text);
+      window.alert("Product added to bag!");
     }
     
   }
