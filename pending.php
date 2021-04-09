@@ -56,9 +56,9 @@ $_SESSION['tailor']=1;
                             </a>
                         </div>
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Booked</a>
-                            <a href="pending.php" class="nav-item nav-link">Pending</a>
+                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="tailor_interface.php" class="nav-item nav-link">Booked</a>
+                            <a href="pending.php" class="nav-item nav-link active">Pending</a>
                             <a href="wishlist.html" class="nav-item nav-link">Completed</a>
                             
                             <a href="my-account.html" class="nav-item nav-link">My Account</a>
@@ -78,36 +78,7 @@ $_SESSION['tailor']=1;
         </div>
         <!-- Nav Bar End -->      
        
-<script>
 
-function deleteRow(element) {
-
-   var parent = element.parentNode;
-   
-   
-  
-      
-     var text="";
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-          
-    if (this.readyState == 4 && this.status == 200) {
-      text =this.responseText;
-      alert(text);
-    }
-    
-  }
-
-  xhttp.open("POST", "change_pending.php", true);
-   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("item_sno="+parent.id);
-location.reload();
-
-  
- }
-  
-
-</script>
 
 
 <style>
@@ -134,7 +105,7 @@ location.reload();
                <!--<div class="row align-items-center product-slider product-slider-4" style="width: 100%;">-->
                 <div class="row" style="height: 100%">
 
-                    <?php $sql="select * from billing where tailor_id=$_SESSION[tailor] and tailor_status='booked';"; 
+                    <?php $sql="select * from billing where tailor_id=$_SESSION[tailor] and tailor_status='pending';"; 
                     $temp=mysqli_query($con,$sql); 
                     while ($row = mysqli_fetch_assoc($temp)) {?>
                     <div class="col-lg-3" style="height: 100%">
@@ -145,8 +116,8 @@ location.reload();
                         <p class="txt"><span>Phone Number: </span><?php echo $row['phno'] ?></p> 
                         <p class="txt"><span>Delivered Date:</span><?php echo $row['delivery_date'] ?></p> 
                         <p class="txt"><span>Price to be charged:</span> Free</p>
-                        <P style="text-align: center;"><button id='<?php echo $row['sno'] ?>' onclick="deleteRow(this)" class="btn">Accept</button>
-                        <button id='<?php echo $row['sno'] ?>' onclick="decline_cart(this)" class="btn">Decline</button></P>
+                        <P style="text-align: center;"><button id='<?php echo $row['sno'] ?>' onclick="add_to_cart(this.id)" class="btn">Completed</button></P>
+                       
                         
 
                         </div>

@@ -1,11 +1,5 @@
 
-<?php
-session_start();
-$con=mysqli_connect('localhost','root','');
-mysqli_select_db($con,'myntra');
-$_SESSION['order_id']=1;
-$_SESSION['customer_id']=1;
-?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -138,11 +132,11 @@ $_SESSION['customer_id']=1;
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <input class="form-control" type="password" placeholder="Password">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Retype Password</label>
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <input class="form-control" type="password" placeholder="Password">
                                 </div>
                                 <div class="col-md-12">
                                     <button class="btn">Submit</button>
@@ -159,7 +153,7 @@ $_SESSION['customer_id']=1;
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <input class="form-control" type="password" placeholder="Password">
                                 </div>
                                 <div class="col-md-12">
                                     <div class="custom-control custom-checkbox">
@@ -168,7 +162,7 @@ $_SESSION['customer_id']=1;
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn">Submit</button>
+                                    <a href="index.php"><button class="btn">Submit</button></a>
                                 </div>
 								<div style="margin-top:5%">
 								<a href="tailor_login.php" style="text-decoration:underline">Login as tailor?</a>
@@ -254,22 +248,7 @@ $_SESSION['customer_id']=1;
         </div>
         <!-- Footer End -->
         
-        <!-- Footer Bottom Start -->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 copyright">
-                        <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
-                    </div>
 
-                    <div class="col-md-6 template-by">
-                        <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer Bottom End -->       
-        
         <!-- Back to Top -->
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         
@@ -283,3 +262,10 @@ $_SESSION['customer_id']=1;
         <script src="js/main.js"></script>
     </body>
 </html>
+<?php
+session_start();
+$con=mysqli_connect('localhost','root','');
+mysqli_select_db($con,'myntra');
+$_SESSION['order_id']=1;
+$_SESSION['customer_id']=1;
+?>
