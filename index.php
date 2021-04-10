@@ -3,7 +3,7 @@
 session_start();
 $con=mysqli_connect('localhost','root','');
 mysqli_select_db($con,'myntra');
-$_SESSION['order_id']=1;
+$_SESSION['order_id']=14;
 $_SESSION['customer_id']=1;
 ?>
 <!DOCTYPE html>

@@ -34,7 +34,7 @@
     <body>
         
         <!-- Nav Bar Start -->
-        <div class="nav" style="height: 80px">
+         <div class="nav" style="height: 80px;">
             <div class="container-fluid">
 
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -51,12 +51,12 @@
                             </a>
                         </div>
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Products</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
+                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                            <a href="product_list.php" class="nav-item nav-link">Products</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
                             <a href="wishlist.html" class="nav-item nav-link">Wishlist</a>
                             
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
+                            <a href="tshirt_customization.php" class="nav-item nav-link">Customization</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                 <div class="dropdown-menu">
@@ -72,21 +72,18 @@
                         </div>
                         <div class="navbar-nav ml-auto" style="position: relative;right:50px">
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                                <div class="dropdown-menu">
-                                    <a href="login.php" class="dropdown-item">Login</a>
-                                    <a href="login.php" class="dropdown-item">Register</a>
-                                </div>
+                               <a href="product_list" class="nav-item nav-link">Login & Register</a>
+                               
                             </div>
                         </div>
                     </div>
                      <a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
+                                <span></span>
                             </a>
-                            <a href="cart.html" class="btn cart">
+                            <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
+                                <span></span>
                             </a>
                 </nav>
             </div>
@@ -176,15 +173,20 @@
         <!-- Login End -->
         
         <!-- Footer Start -->
-        <div class="footer">
+            <div class="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-widget">
                             <h2>Get in Touch</h2>
                             <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                                <p><i class="fa fa-envelope"></i>email@example.com</p>
+                                <p><i class="fa fa-map-marker"></i>Buildings Alyssa,
+Begonia and Clover situated in Embassy Tech Village,
+Outer Ring Road,
+Devarabeesanahalli Village,
+Varthur Hobli,
+Bengaluru – 560103, India</p>
+                                <p><i class="fa fa-envelope"></i>queriesmyntra@myntra.com</p>
                                 <p><i class="fa fa-phone"></i>+123-456-7890</p>
                             </div>
                         </div>
@@ -220,7 +222,7 @@
                         <div class="footer-widget">
                             <h2>Purchase Info</h2>
                             <ul>
-                                <li><a href="#">Pyament Policy</a></li>
+                                <li><a href="#">Payment Policy</a></li>
                                 <li><a href="#">Shipping Policy</a></li>
                                 <li><a href="#">Return Policy</a></li>
                             </ul>
@@ -262,10 +264,3 @@
         <script src="js/main.js"></script>
     </body>
 </html>
-<?php
-session_start();
-$con=mysqli_connect('localhost','root','');
-mysqli_select_db($con,'myntra');
-$_SESSION['order_id']=1;
-$_SESSION['customer_id']=1;
-?>

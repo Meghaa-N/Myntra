@@ -56,10 +56,10 @@ $_SESSION['tailor']=1;
                             </a>
                         </div>
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="tailor_interface.php" class="nav-item nav-link">Booked</a>
                             <a href="pending.php" class="nav-item nav-link active">Pending</a>
-                            <a href="wishlist.html" class="nav-item nav-link">Completed</a>
+                            <a href="completed.php" class="nav-item nav-link">Completed</a>
                             
                             <a href="my-account.html" class="nav-item nav-link">My Account</a>
                         </div>

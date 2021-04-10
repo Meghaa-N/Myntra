@@ -3,6 +3,7 @@ session_start();
 $con=mysqli_connect('localhost','root','');
 mysqli_select_db($con,'myntra');
 $_SESSION['tailor']=1;
+$_SESSION['order_id_decline']=2;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,10 +57,10 @@ $_SESSION['tailor']=1;
                             </a>
                         </div>
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Booked</a>
+                            <a href="tailor_interface.php" class="nav-item nav-link active">Home</a>
+                            <a href="tailor_interface.php" class="nav-item nav-link">Booked</a>
                             <a href="pending.php" class="nav-item nav-link">Pending</a>
-                            <a href="wishlist.html" class="nav-item nav-link">Completed</a>
+                            <a href="completed.php" class="nav-item nav-link">Completed</a>
                             
                             <a href="my-account.html" class="nav-item nav-link">My Account</a>
                         </div>
@@ -93,7 +94,7 @@ function deleteRow(element) {
           
     if (this.readyState == 4 && this.status == 200) {
       text =this.responseText;
-      alert(text);
+      
     }
     
   }
@@ -105,6 +106,33 @@ location.reload();
 
   
  }
+
+ function decline(element) {
+
+   var parent = element.parentNode;
+   
+   
+  
+      
+     var text="";
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+          
+    if (this.readyState == 4 && this.status == 200) {
+      text =this.responseText;
+      
+    }
+    
+  }
+
+  xhttp.open("POST", "decline.php", true);
+   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("item_sno="+parent.id);
+location.reload();
+
+  
+ }
+  
   
 
 </script>
@@ -146,7 +174,7 @@ location.reload();
                         <p class="txt"><span>Delivered Date:</span><?php echo $row['delivery_date'] ?></p> 
                         <p class="txt"><span>Price to be charged:</span> Free</p>
                         <P style="text-align: center;"><button id='<?php echo $row['sno'] ?>' onclick="deleteRow(this)" class="btn">Accept</button>
-                        <button id='<?php echo $row['sno'] ?>' onclick="decline_cart(this)" class="btn">Decline</button></P>
+                        <button id='<?php echo $row['sno'] ?>' onclick="decline(this)" class="btn">Decline</button></P>
                         
 
                         </div>

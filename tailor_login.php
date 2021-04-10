@@ -3,7 +3,7 @@
 session_start();
 $con=mysqli_connect('localhost','root','');
 mysqli_select_db($con,'myntra');
-$_SESSION['order_id']=1;
+$_SESSION['order_id']=14;
 $_SESSION['customer_id']=1;
 ?>
 <!DOCTYPE html>
@@ -127,7 +127,7 @@ $_SESSION['customer_id']=1;
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <input class="form-control" type="password" placeholder="Password">
                                 </div>
                                 <div class="col-md-12">
                                     <div class="custom-control custom-checkbox">
@@ -150,15 +150,20 @@ $_SESSION['customer_id']=1;
         <!-- Login End -->
         
         <!-- Footer Start -->
-        <div class="footer">
+           <div class="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-widget">
                             <h2>Get in Touch</h2>
                             <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                                <p><i class="fa fa-envelope"></i>email@example.com</p>
+                                <p><i class="fa fa-map-marker"></i>Buildings Alyssa,
+Begonia and Clover situated in Embassy Tech Village,
+Outer Ring Road,
+Devarabeesanahalli Village,
+Varthur Hobli,
+Bengaluru – 560103, India</p>
+                                <p><i class="fa fa-envelope"></i>queriesmyntra@myntra.com</p>
                                 <p><i class="fa fa-phone"></i>+123-456-7890</p>
                             </div>
                         </div>
@@ -194,7 +199,7 @@ $_SESSION['customer_id']=1;
                         <div class="footer-widget">
                             <h2>Purchase Info</h2>
                             <ul>
-                                <li><a href="#">Pyament Policy</a></li>
+                                <li><a href="#">Payment Policy</a></li>
                                 <li><a href="#">Shipping Policy</a></li>
                                 <li><a href="#">Return Policy</a></li>
                             </ul>
